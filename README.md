@@ -1,3 +1,89 @@
+<매뉴얼>
+https://cafe.naver.com/sysdba/34
+
+
+
+1. 다운로드
+
+- 아래 사이트에 접속해서 ASH Viewer & OPEN JDK 를 다운 받습니다.
+
+ 
+DBA 실무 노하우 실습환경
+■ 실습 환경 가상서버 이미지 DBA실무 가상머신 이미지 ■ 기타 프로그램 D2Coding : 고정글꼴 폰트 putty : 터미널 접속 프로그램 sqldeveloper : 오라클 접속/관리 프로그램 tvnviewer : 리눅스 GUI 원격 접속 프로그램(VNC 클라이언트) ASH Viewer & OPEN JDK : 오라클 실시간 성능분석 프로그램
+
+edu.dba.co.kr
+
+- 다운 받은 파일(ashv_jdk.zip)의 압축을 풀면 세개의 파일로 구성되어 있습니다.
+
+. ashv-4.4.0-bin.zip : ASH Viewer
+
+. ojdbc8.jar : JDBC 드라이버
+
+. openjdk-19.0.2_windows-x64_bin.zip : ASH Viewer가 다소 높은 JDK를 필요로 하기 때문에 새로 설치하는 것을 권장합니다. 별도의 설치과정은 필요없고 압축만 풀고 경로만 지정하면 됩니다.
+
+​
+
+​
+
+2. 디렉토리 구성
+
+﻿D:\Program\ashv-4.4.0 : ashv-4.4.0-bin.zip
+D:\Program\jdk-19.0.2 : openjdk-19.0.2_windows-x64_bin.zip
+D:\Program\jdk-19.0.2\lib : ojdbc8.jar 파일을 복사
+- 위와 같이 디렉토리를 구성하고 압축을 해제합니다. 디렉토리 구성은 원하는 대로 하시면 됩니다.
+
+- 각 디렉토리 파일 목록은 다음과 같습니다.
+
+
+
+​
+
+​
+
+3. run.bat 파일 수정​
+
+@REM ----------------------------------------------------------------------------
+@REM Licensed to the GNU GENERAL PUBLIC LICENSE Version 3
+@REM ----------------------------------------------------------------------------
+
+@REM ----------------------------------------------------------------------------
+@REM ASH Viewer start up batch script
+@REM
+@REM Required ENV vars:
+@REM JAVA_HOME - location of a JDK home dir
+
+SET JAVA_HOME=D:\Program\jdk-19.0.2
+
+SET JAVA_EXE="%JAVA_HOME%\bin\java.exe"
+
+%JAVA_EXE% -Xmx1024m -jar ASH-Viewer.jar
+- D:\Program\ashv-4.4.0\run.bat 파일의  JAVA_HOME을 변경합니다.
+
+​
+
+​
+
+4. 실행 및 접속정보 설정
+
+
+- run.bat 파일을 더블클릭하여 실행합니다. 화면이 뜨지 않을 경우 CMD 창에서 run.bat를 실행하여 로그를 확인합니다.
+
+​
+
+
+- Edit - 접속정보 설정 - Save - Connect 순서로 진행합니다.
+
+URL : jdbc:oracle:thin:@ip_address:port:SID
+JDBC : D:\Program\jdk-19.0.2\lib\ojdbc8.jar
+- 접속정보는 URL 부분에 위와 같은 양식으로 설정합니다.
+
+- Open JAR 버튼을 눌러 위에서 다운받아 복사한 JDBC 드라이버의 위치를 지정합니다.
+- 
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # ASH Viewer
 
 ASH Viewer provides graphical view of active session history data within the database.
